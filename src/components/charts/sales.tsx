@@ -4,7 +4,6 @@ import {
 	CartesianGrid,
 	Line,
 	LineChart,
-	ReferenceLine,
 	ResponsiveContainer,
 	XAxis,
 	YAxis,
@@ -36,7 +35,7 @@ export function SalesChart({ data }: SalesChartProps) {
 					Streams and revenue over the last 10 months
 				</CardDescription>
 			</CardHeader>
-			<CardContent>
+			<CardContent className="w-full p-3 sm:p-6">
 				<ChartContainer
 					config={{
 						streams: {
@@ -48,12 +47,12 @@ export function SalesChart({ data }: SalesChartProps) {
 							color: "hsl(var(--chart-2))",
 						},
 					}}
-					className="h-[300px]"
+					className="h-[250px] w-full sm:h-[300px]"
 				>
 					<ResponsiveContainer width="100%" height="100%">
 						<LineChart
 							data={data}
-							margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+							margin={{ top: 5, right: 10, left: 10, bottom: 5 }}
 						>
 							<CartesianGrid
 								strokeDasharray="3 3"
@@ -64,12 +63,15 @@ export function SalesChart({ data }: SalesChartProps) {
 								className="fill-muted-foreground text-xs"
 								tickLine={false}
 								axisLine={false}
+								tick={{ fontSize: 10 }}
 							/>
 							<YAxis
 								yAxisId="left"
 								className="fill-muted-foreground text-xs"
 								tickLine={false}
 								axisLine={false}
+								tick={{ fontSize: 10 }}
+								width={60}
 							/>
 							<YAxis
 								yAxisId="right"
@@ -77,6 +79,8 @@ export function SalesChart({ data }: SalesChartProps) {
 								className="fill-muted-foreground text-xs"
 								tickLine={false}
 								axisLine={false}
+								tick={{ fontSize: 10 }}
+								width={50}
 							/>
 							<ChartTooltip
 								content={<ChartTooltipContent />}

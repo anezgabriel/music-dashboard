@@ -117,7 +117,7 @@ export default function AnalyticsPage() {
 				</Card>
 			</div>
 
-			<div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+			<div className="mb-8 grid grid-cols-1 gap-6 overflow-x-hidden lg:grid-cols-2">
 				<SalesChart data={salesData} />
 				<TopTracksTable tracks={topTracks} />
 			</div>
