@@ -1,37 +1,47 @@
-import Link from "next/link";
+import { ReleaseCard } from "~/components/cards/release";
+import { Badge } from "~/components/ui/badge";
+import { releases } from "~/lib/mock-data";
 
-export default function HomePage() {
+export default function ReleasesPage() {
+	const releasedTracks = releases.filter((r) => r.status === "Released");
+	const upcomingTracks = releases.filter((r) => r.status === "Upcoming");
+
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-			<div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-				<h1 className="font-extrabold text-5xl text-white tracking-tight sm:text-[5rem]">
-					Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
+		<div className="container px-4 py-8">
+			<div className="mb-8">
+				<h1 className="mb-2 text-balance font-bold text-4xl">
+					Recent Releases
 				</h1>
-				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-					<Link
-						className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-						href="https://create.t3.gg/en/usage/first-steps"
-						target="_blank"
-					>
-						<h3 className="font-bold text-2xl">First Steps →</h3>
-						<div className="text-lg">
-							Just the basics - Everything you need to know to set up your
-							database and authentication.
-						</div>
-					</Link>
-					<Link
-						className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-						href="https://create.t3.gg/en/introduction"
-						target="_blank"
-					>
-						<h3 className="font-bold text-2xl">Documentation →</h3>
-						<div className="text-lg">
-							Learn more about Create T3 App, the libraries it uses, and how to
-							deploy it.
-						</div>
-					</Link>
-				</div>
+				<p className="text-lg text-muted-foreground">
+					Track your music catalog and performance
+				</p>
 			</div>
-		</main>
+
+			{upcomingTracks.length > 0 && (
+				<section className="mb-12">
+					<div className="mb-6 flex items-center gap-3">
+						<h2 className="font-semibold text-2xl">Upcoming</h2>
+						<Badge variant="secondary">{upcomingTracks.length}</Badge>
+					</div>
+					<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+						{upcomingTracks.map((release) => (
+							<ReleaseCard key={release.id} release={release} />
+						))}
+					</div>
+				</section>
+			)}
+
+			<section>
+				<div className="mb-6 flex items-center gap-3">
+					<h2 className="font-semibold text-2xl">Released</h2>
+					<Badge variant="secondary">{releasedTracks.length}</Badge>
+				</div>
+				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+					{releasedTracks.map((release) => (
+						<ReleaseCard key={release.id} release={release} />
+					))}
+				</div>
+			</section>
+		</div>
 	);
 }

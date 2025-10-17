@@ -38,6 +38,11 @@ export function ReleaseCard({ release }: ReleaseCardProps) {
 						alt={release.title}
 						fill
 						className="object-cover transition-transform group-hover:scale-105"
+						unoptimized={process.env.NODE_ENV === "development"}
+						onError={(e) => {
+							console.error("Image failed to load:", release.coverArt);
+							e.currentTarget.src = "/placeholder.svg";
+						}}
 					/>
 					{release.status === "Upcoming" && (
 						<div className="absolute inset-0 flex items-center justify-center bg-black/60">

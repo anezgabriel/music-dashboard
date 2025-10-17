@@ -60,7 +60,7 @@ export const releases: Release[] = [
 		id: "4",
 		title: "Neon Nights",
 		coverArt: "/neon-nights-album-cover.png",
-		releaseDate: "2024-11-01",
+		releaseDate: "2026-01-10",
 		streams: 0,
 		type: "Single",
 		status: "Upcoming",
