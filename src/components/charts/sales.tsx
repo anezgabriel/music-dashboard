@@ -4,6 +4,7 @@ import {
 	CartesianGrid,
 	Line,
 	LineChart,
+	ReferenceLine,
 	ResponsiveContainer,
 	XAxis,
 	YAxis,
@@ -52,28 +53,66 @@ export function SalesChart({ data }: SalesChartProps) {
 					<ResponsiveContainer width="100%" height="100%">
 						<LineChart
 							data={data}
-							margin={{ top: 5, right: 10, left: 10, bottom: 5 }}
+							margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
 						>
-							<CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-							<XAxis dataKey="month" className="text-xs" />
-							<YAxis yAxisId="left" className="text-xs" />
-							<YAxis yAxisId="right" orientation="right" className="text-xs" />
-							<ChartTooltip content={<ChartTooltipContent />} />
+							<CartesianGrid
+								strokeDasharray="3 3"
+								className="stroke-muted/50"
+							/>
+							<XAxis
+								dataKey="month"
+								className="fill-muted-foreground text-xs"
+								tickLine={false}
+								axisLine={false}
+							/>
+							<YAxis
+								yAxisId="left"
+								className="fill-muted-foreground text-xs"
+								tickLine={false}
+								axisLine={false}
+							/>
+							<YAxis
+								yAxisId="right"
+								orientation="right"
+								className="fill-muted-foreground text-xs"
+								tickLine={false}
+								axisLine={false}
+							/>
+							<ChartTooltip
+								content={<ChartTooltipContent />}
+								cursor={{
+									stroke: "hsl(var(--muted-foreground))",
+									strokeWidth: 1,
+									strokeDasharray: "5 5",
+								}}
+							/>
 							<Line
 								yAxisId="left"
 								type="monotone"
 								dataKey="streams"
-								stroke="var(--color-streams)"
-								strokeWidth={2}
-								dot={false}
+								stroke="#3b82f6"
+								strokeWidth={3}
+								dot={{ fill: "#3b82f6", strokeWidth: 2, r: 4 }}
+								activeDot={{
+									r: 6,
+									stroke: "#3b82f6",
+									strokeWidth: 2,
+									fill: "hsl(var(--background))",
+								}}
 							/>
 							<Line
 								yAxisId="right"
 								type="monotone"
 								dataKey="revenue"
-								stroke="var(--color-revenue)"
-								strokeWidth={2}
-								dot={false}
+								stroke="#10b981"
+								strokeWidth={3}
+								dot={{ fill: "#10b981", strokeWidth: 2, r: 4 }}
+								activeDot={{
+									r: 6,
+									stroke: "#10b981",
+									strokeWidth: 2,
+									fill: "hsl(var(--background))",
+								}}
 							/>
 						</LineChart>
 					</ResponsiveContainer>

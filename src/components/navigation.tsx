@@ -20,7 +20,7 @@ export function Navigation() {
 		<header className="sticky top-0 z-50 w-full border-border border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
 			<div className="container mx-auto flex h-16 items-center justify-between px-4">
 				<div className="flex items-center gap-8">
-					<Link href="/" className="flex items-center gap-2">
+					<Link href="/" className="flex cursor-pointer items-center gap-2">
 						<div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
 							<Music className="h-5 w-5 text-primary-foreground" />
 						</div>
@@ -35,7 +35,10 @@ export function Navigation() {
 								<Link key={item.href} href={item.href}>
 									<Button
 										variant={isActive ? "secondary" : "ghost"}
-										className={cn("gap-2", isActive && "bg-secondary")}
+										className={cn(
+											"cursor-pointer gap-2",
+											isActive && "bg-secondary",
+										)}
 									>
 										<Icon className="h-4 w-4" />
 										{item.label}
@@ -58,7 +61,11 @@ export function Navigation() {
 								const Icon = item.icon;
 								const isActive = pathname === item.href;
 								return (
-									<Link key={item.href} href={item.href}>
+									<Link
+										className="cursor-pointer"
+										key={item.href}
+										href={item.href}
+									>
 										<Button
 											variant={isActive ? "secondary" : "ghost"}
 											className={cn(
