@@ -23,7 +23,9 @@ export default function RootLayout({
 		<html lang="en" className="dark">
 			<body className={cn("font-sans antialiased")}>
 				<Navigation />
-				<main className="min-h-[calc(100vh-4rem)]">{children}</main>
+				<main className="container mx-auto min-h-[calc(100vh-4rem)]">
+					{children}
+				</main>
 			</body>
 		</html>
 	);
