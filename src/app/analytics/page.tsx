@@ -56,12 +56,14 @@ export default function AnalyticsPage() {
 						<Headphones className="h-4 w-4 text-muted-foreground" />
 					</CardHeader>
 					<CardContent>
-						<div className="font-bold text-2xl text-chart-2">
+						<div className="font-bold text-2xl text-green-500">
 							{(totalStreams / 1000000).toFixed(1)}M
 						</div>
 						<p className="mt-1 flex items-center gap-1 text-muted-foreground text-xs">
-							<TrendingUp className="h-3 w-3 text-chart-2" />
-							<span className="text-chart-2">+{streamsGrowth.toFixed(1)}%</span>{" "}
+							<TrendingUp className="h-3 w-3 text-green-500" />
+							<span className="text-green-500">
+								+{streamsGrowth.toFixed(1)}%
+							</span>{" "}
 							from last month
 						</p>
 					</CardContent>
@@ -73,12 +75,14 @@ export default function AnalyticsPage() {
 						<DollarSign className="h-4 w-4 text-muted-foreground" />
 					</CardHeader>
 					<CardContent>
-						<div className="font-bold text-2xl text-chart-2">
+						<div className="font-bold text-2xl text-green-500">
 							${(totalRevenue / 1000).toFixed(1)}K
 						</div>
 						<p className="mt-1 flex items-center gap-1 text-muted-foreground text-xs">
-							<TrendingUp className="h-3 w-3 text-chart-2" />
-							<span className="text-chart-2">+{revenueGrowth.toFixed(1)}%</span>{" "}
+							<TrendingUp className="h-3 w-3 text-green-500" />
+							<span className="text-green-500">
+								+{revenueGrowth.toFixed(1)}%
+							</span>{" "}
 							from last month
 						</p>
 					</CardContent>
