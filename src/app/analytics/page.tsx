@@ -3,6 +3,9 @@ import { Suspense } from "react";
 import { AnalyticsContent } from "~/components/analytics/analytics-content";
 import { AnalyticsSkeleton } from "~/components/skeletons/analytics-skeleton";
 
+// Force dynamic rendering - no caching
+export const dynamic = "force-dynamic";
+
 // Metadata for SEO
 export const metadata: Metadata = {
 	title: "Sales Analytics | Music Dashboard",

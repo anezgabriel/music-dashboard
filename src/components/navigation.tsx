@@ -3,6 +3,7 @@
 import { Menu, Music, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
 import { cn } from "~/lib/utils";
@@ -15,6 +16,7 @@ const navItems = [
 
 export function Navigation() {
 	const pathname = usePathname();
+	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<header className="sticky top-0 z-50 w-full border-border border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -49,7 +51,7 @@ export function Navigation() {
 					</nav>
 				</div>
 
-				<Sheet>
+				<Sheet open={isOpen} onOpenChange={setIsOpen}>
 					<SheetTrigger asChild className="md:hidden">
 						<Button variant="ghost" size="icon">
 							<Menu className="h-5 w-5" />
@@ -65,6 +67,7 @@ export function Navigation() {
 										className="cursor-pointer"
 										key={item.href}
 										href={item.href}
+										onClick={() => setIsOpen(false)}
 									>
 										<Button
 											variant={isActive ? "secondary" : "ghost"}
